@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%; overflow: hidden; "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Embrane</title> 
+	<link rel="stylesheet/less" href="styles/less/bootstrap.less" type="text/css">
+  <link rel="stylesheet" href="styles/layout-default-latest.css" type="text/css">
+  <link rel="stylesheet" href="styles/DT_bootstrap.css" type="text/css">
+
+	<style type="text/css">
+	/* give outer-panes their own colors */
+	.ui-layout-resizer {background: #ddd;}
+	.ui-layout-toggler {background: #eee;}
+	#mainContent{display:block;height:580px;}
+	
+	</style>
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="scripts/jquery-ui-latest.js"></script>
+	<script type="text/javascript" src="scripts/jquery.layout-latest.js"></script>
+	<script src="scripts/less-1.3.0.min.js" type="text/javascript"></script>
+  <script src="scripts/DT_bootstrap.js" type="text/javascript"></script>
+  <script src="scripts/bootstrap.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+	var outerLayout, westLayout, eastLayout;
+
+	$(document).ready(function() {
+	  
+	  //table
+		$('#task-table').dataTable( {
+            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+		} );
+		$.extend( $.fn.dataTableExt.oStdClasses, {
+			"sWrapper": "dataTables_wrapper form-inline"
+		} );
+
+		outerLayout = $('body').layout({
+				minSize:			35	// ALL panes
+			,	west__size:			200
+			,	east__size:			600 
+			,	useStateCookie:		false
+		});
+
+		centerLayout = $('div.ui-layout-center').layout({
+				minSize:				50	// ALL panes
+			,	center__paneSelector:	".center-center"
+			,	south__paneSelector:	".center-south"
+			,	south__size:			300
+			, north__size:    35
+		});
+
+	});
+
+	</script>
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+      $(".collapse").collapse();
+    });
+  </script>
+  
+</head>
+<body class="ui-layout-container">
+
+
+    
+    <DIV class="" style="display:block;position:absolute;height:40px;width:100%;z-index:20;"><header>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="brand" href="#">Embrane heleos Logo</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li class="active"><a href="#">Shortcut menu</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                  <form class="navbar-search pull-left" action="">
+                    <input type="text" class="search-query span2" placeholder="Search DVAs">
+                  </form>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layne Zimmmerman <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Profile</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Log out</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compare Items <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Actions</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Actions</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div><!-- /.nav-collapse -->
+            </div>
+          </div><!-- /navbar-inner -->
+        </div>
+    </header>
+    </DIV>
+    <div class="ui-layout-north">
+      
+    </div>
+    <DIV class="ui-layout-south">Footer</DIV>
+  <div class="ui-layout-center">
+  	<div class="center-center inner-pane">
+  	  <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Dashboard</a></li>
+          <li><a href="#tab2" data-toggle="tab">Resources</a></li>
+          <li><a href="#tab3" data-toggle="tab">Security</a></li>
+          <li><a href="#tab4" data-toggle="tab">Reports</a></li>
+          <li><a href="#tab5" data-toggle="tab">Settings</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <div class="row-fluid">
+              <div id="ref-panel" class="span3">
+                <h5>CRITICAL EVENTS</h5>
+                <div id="notifications" class="well">
+                  <label for="date-filter">Filter:</label>
+                  <select name="date-filter" id="date-filter" class="input-medium">
+                    <option value="option1">last 30 days</option>
+                    <option value="option2">last 3 months</option>
+                  </select>
+                  <p class="label label-warning">
+                    4 alert warnings
+                  </p>
+                  <p class="label label-important">
+                    10 alerts
+                  </p>
+                </div>
+                <div id="summary">
+                  <p><span class="badge badge-info">125</span> DVAs Total</p>
+                  <p class="clearfix"><span class="badge badge-info">28</span> Load Balancers Total
+                  <span class="pull-right"><span class="badge">21</span> Active / <span class="badge">4</span> Parked</span></p>
+                  <p class="clearfix"><span class="badge badge-info">97</span> Firewalls / VPNs Total
+                  <span class="pull-right"><span class="badge">88</span> Active / <span class="badge">9</span> Parked</span></p>
+                </div>
+              </div>
+              <div id="graph-panel" class="span9">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#graph1" data-toggle="tab">CPUs<br>Total:192 GJHz Free</a></li>
+                  <li><a href="#graph2" data-toggle="tab">Memory<br>Total:960 GB Free</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="graph1" class="tab-pane active">
+                    <img src="images/chart.png" alt="">
+                  </div>
+                  <div id="graph2" class="tab-pane">
+                    <p>other graph</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <p>Resources</p>
+          </div>
+          <div class="tab-pane" id="tab3">
+            <p>Security</p>
+          </div>
+          <div class="tab-pane" id="tab4">
+            <p>Reports</p>
+          </div>
+          <div class="tab-pane" id="tab5">
+            <p>Settings</p>
+          </div>
+        </div>
+      </div>
+      
+  	</div>
+  	<div class="center-south inner-pane">
+  	  <ul class="nav nav-tabs">
+  	    <li class="active"><a href="#table1" data-toggle="tab">Tasks</a></li>
+  	    <li><a href="#table2" data-toggle="tab">Alerts</a></li>
+  	    <li><a href="#table3" data-toggle="tab">Recent Syslog</a></li>
+  	  </ul>
+  	  <div class="tab-content">
+  	    <div id="table1" class="tab-pane active">
+  	      <div class="row-fluid">
+  	        <div class="span2 pull-right tab-actions">
+              <a href="#" class="btn">Compare</a>
+              <a href="#" class="btn"><i class="icon-share"></i></a>
+            </div>
+          </div>
+    	      <table class="table table-bordered table-striped" id="task-table">
+    	        <thead>
+            	   <tr>
+            	     <th>ID</th>
+            	     <th>Started</th>
+            	     <th>Ended</th>
+            	     <th>Description</th>
+            	     <th>By</th>
+            	     <th>Tags</th>
+            	     <th>Status Message</th>
+            	  </tr>
+            	</thead>
+            	</tbody>
+            	   <tr>
+            	     <td>128</td>
+            	     <td>8/2/2012 14:04</td>
+            	     <td>8/2/2012 18:01</td>
+            	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+            	     <td>admin</td>
+            	     <td></td>
+            	     <td>Automatically cancelled at system restart</td>
+            	   </tr>
+            	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   <tr>
+             	     <td>128</td>
+             	     <td>8/2/2012 14:04</td>
+             	     <td>8/2/2012 18:01</td>
+             	     <td>Delete virtual machine: DPD-d8d0d9d6df98-4260-a45yff-a8dvh6s0-1</td>
+             	     <td>admin</td>
+             	     <td></td>
+             	     <td>Automatically cancelled at system restart</td>
+             	   </tr>
+             	   </tbody>
+            	 </table>
+  	    </div>
+  	    <div id="table2" class="tab-pane">
+  	     <p>table</p>
+  	    </div>
+  	    <div id="table3" class="tab-pane">
+  	     <p>table</p>
+  	    </div>
+  	  </div>
+      
+  	</div>
+  </div>
+
+  <div class="ui-layout-west inner-pane">
+    <nav>
+      <a href="#">Home</a>
+      <h4>Elastic Services Managers (ESMs)</h4>
+      <a href="#" class="btn">Manage ESMs</a>
+    <hr>
+    <ul class="nav nav-list tree">
+      <li class="active">
+          <a href="#esm-name" data-toggle="collapse" data-target="#esm-name" class="has-subitems collapsed">ESM name</a>
+          <div id="esm-name" class="collapse in">
+            <h6>Distributed Virual Appliaces (DVAs)</h6>
+            <a href="#" class="btn">Manage DVAs</a>
+            <hr>
+            <ul class="nav nav-list">
+              <li><a href="#" class="has-not-subitems">Recently Configured</a></li>
+              <li><a href="#" class="has-not-subitems">[Client Name]</a></li>
+              <li><a href="#" class="has-not-subitems">Smart Folder</a></li>
+              <li>
+                <a href="#load-balancers" data-toggle="collapse" data-target="#load-balancers" class="has-subitems collapsed">Load Balancers</a>
+                <div id="load-balancers" class="collapse in nav nav-list">
+                  <a href="#">Actions</a>
+                </div>
+              </li>
+              <li>
+                <a href="#firewalls" data-toggle="collapse" data-target="#firewalls" class="has-subitems collapsed">Firewalls/VPNs</a>
+                <div id="firewalls" class="collapse in nav nav-list">
+                  <ul class="nav nav-list">
+                    <li><a href="#">Firewall 1</a></li>
+                    <li><a href="#">Firewall 2</a></li>
+                    <li><a href="#">Firewall 3</a></li>
+                    <li><a href="#">Firewall 4</a></li>
+                    <li><a href="#">Firewall 5</a></li>
+                    <li><a href="#">Firewall 6</a></li>
+                    <li><a href="#">Firewall 7</a></li>
+                    <li><a href="#">Firewall 8</a></li>
+                    <li><a href="#">Firewall 9</a></li>
+                    <li><a href="#">Firewall 10</a></li>
+                    <li><a href="#">Firewall 11</a></li>
+                    <li><a href="#">Firewall 12</a></li>
+                    <li><a href="#">Firewall 13</a></li>
+                    <li><a href="#">Firewall 14</a></li>
+                    <li><a href="#">Firewall 15</a></li>
+                    <li><a href="#">Firewall 16</a></li>
+                    <li><a href="#">Firewall 17</a></li>
+                    <li><a href="#">Firewall 18</a></li>
+                    <li><a href="#">Firewall 19</a></li>
+                    <li><a href="#">Firewall 20</a></li>
+                    <li><a href="#">Firewall 21</a></li>
+                    <li><a href="#">Firewall 22</a></li>
+                    <li><a href="#">Firewall 23</a></li>
+                    <li><a href="#">Firewall 24</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </li>
+      <li><a href="#" class="has-not-subitems">ESM name 2</a></li>
+      <li><a href="#" class="has-not-subitems">ESM name 3</a></li>
+    </ul>
+    </nav>
+  </div>
+
+
+</body>
+</html>
